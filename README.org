@@ -1,6 +1,6 @@
 #+title: Descartes
 #+author: James Leslie
-[[https://img.shields.io/github/license/jeslie0/descartes.svg]] [[https://img.shields.io/github/v/release/jeslie0/mkSpagoDerivation.svg]]
+[[https://img.shields.io/github/license/jeslie0/descartes.svg]] [[https://img.shields.io/github/v/release/jeslie0/descartes.svg]]
 #+html: <img src=".img/hexagon.png" width="200px"/>
 
 This is a Haskell wrapper around The University of Edinburgh, School of Informatics' [[https://www.inf.ed.ac.uk/teaching/courses/cp/descartes.html][Descartes Package]]. The Descartes Packages is a small C library that uses [[https://www.libsdl.org/][SDL]] to make a very simple graphics package. It provides a way to make and render points, lines and rectangles on a 500px by 500px grid. It is mainly useful for educational purposes (indeed, I used it in the introductory "Computer Programming" course, back in 2014).
