@@ -9,7 +9,9 @@ main = D.withGraphics $ do
 
   putStrLn "Click twice to draw a line."
   p1 <- D.getPoint
+  print p1
   p2 <- D.getPoint
+  print p2
   D.draw $ D.lineSeg p1 p2
 
   when (p1 == p2) $ putStrLn "The two points are equal!"
