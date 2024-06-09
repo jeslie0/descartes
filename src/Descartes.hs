@@ -2,6 +2,7 @@ module Descartes
   ( Colour (..),
     setColour,
     clear,
+    withGraphics,
     openGraphics,
     closeGraphics,
     Point,
@@ -27,4 +28,4 @@ where
 import Descartes.LineSeg (LineSeg, draw, finalPoint, initialPoint, length, lineSeg)
 import Descartes.Point (Point, getPoint, point, x, y)
 import Descartes.Rectangle (Rectangle, bottomLeft, clearRectangle, fillRectangle, rectangle, topRight)
-import Descartes.Window (Colour (..), clear, closeGraphics, openGraphics, setColour)
+import Descartes.Window (Colour (..), clear, withGraphics ,closeGraphics, openGraphics, setColour)

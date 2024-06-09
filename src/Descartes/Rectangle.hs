@@ -9,6 +9,11 @@ import System.IO.Unsafe (unsafePerformIO)
 
 newtype Rectangle = Rectangle (ForeignPtr Rectangle_t)
 
+instance Eq Rectangle where
+  r1 == r2 =
+    Descartes.Rectangle.bottomLeft r1 == Descartes.Rectangle.bottomLeft r2
+    && Descartes.Rectangle.topRight r1 == Descartes.Rectangle.topRight r2
+
 rectangle :: Point -> Point -> Rectangle
 rectangle (Point frnP1) (Point frnP2) =
   Rectangle . unsafePerformIO . withForeignPtr frnP1 $

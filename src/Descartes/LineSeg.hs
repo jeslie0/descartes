@@ -11,6 +11,12 @@ import System.IO.Unsafe (unsafePerformIO)
 
 newtype LineSeg = LineSeg (ForeignPtr LineSeg_t)
 
+instance Eq LineSeg where
+  l1 == l2 =
+    Descartes.LineSeg.initialPoint l1 == Descartes.LineSeg.initialPoint l2
+    && Descartes.LineSeg.finalPoint l1 == Descartes.LineSeg.finalPoint l2
+
+
 lineSeg :: Point -> Point -> LineSeg
 lineSeg (Point frnP1) (Point frnP2) =
   LineSeg . unsafePerformIO . withForeignPtr frnP1 $

@@ -1,9 +1,17 @@
-module Descartes.Window (Colour(..), Descartes.Window.setColour, clear, openGraphics, closeGraphics) where
+module Descartes.Window (Colour (..), Descartes.Window.setColour, clear, withGraphics, openGraphics, closeGraphics) where
 
-import Descartes.Internal.Foreign.Window (setColour, clear, openGraphics, closeGraphics)
+import Control.Exception (bracket_)
+import Descartes.Internal.Foreign.Window (clear, closeGraphics, openGraphics, setColour)
 
-data Colour = White | Black | Red | Green | Blue deriving Enum
+data Colour = White | Black | Red | Green | Blue deriving (Enum)
 
+-- | Set the colour used to plot lines and rectangles.
 setColour :: Colour -> IO ()
 setColour =
   Descartes.Internal.Foreign.Window.setColour . fromIntegral . fromEnum
+
+-- | Open a graphics window and run the given graphics commands. Close
+-- the window when done.
+withGraphics :: IO a -> IO a
+withGraphics =
+  bracket_ openGraphics closeGraphics
