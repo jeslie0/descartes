@@ -44,7 +44,8 @@
               in
                 {
                   default =
-                    (haskellPackages system).callCabal2nix (packageName system) self {};
+                    # (haskellPackages system).callCabal2nix (packageName system) self {};
+                    import ./default.nix ((haskellPackages system) // { lib = pkgs.lib; SDL = pkgs.SDL; });
                 }
             );
 
@@ -64,8 +65,6 @@
                   buildInputs = with (haskellPackages system);
                     [ haskell-language-server
                       cabal-install
-                      # pkgs.SDL2.dev
-                      # pkgs.SDL2
                       pkgs.SDL
                       pkgs.SDL.dev
                     ];

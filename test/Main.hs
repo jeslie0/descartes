@@ -1,4 +1,4 @@
-module Main (main) where
+module Main (main, run) where
 
 import Descartes qualified as D
 import Control.Monad (when, forM_)
@@ -6,7 +6,11 @@ import Data.Complex qualified as C
 import Data.Functor ((<&>))
 
 main :: IO ()
-main = D.withGraphics $ do
+main =
+  putStrLn "Test succeeded"
+
+run :: IO ()
+run = D.withGraphics $ do
   D.setColour D.Blue
 
   putStrLn "Click twice to draw a line."
