@@ -9,9 +9,11 @@ data Colour = White | Black | Red | Green | Blue deriving (Enum)
 setColour :: Colour -> IO ()
 setColour =
   Descartes.Internal.Foreign.Window.setColour . fromIntegral . fromEnum
+{-# INLINE setColour #-}
 
 -- | Open a graphics window and run the given graphics commands. Close
 -- the window when done.
 withGraphics :: IO a -> IO a
 withGraphics =
   bracket_ openGraphics closeGraphics
+{-# INLINE withGraphics #-}

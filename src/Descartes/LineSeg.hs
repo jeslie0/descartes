@@ -24,26 +24,31 @@ lineSeg (Point frnP1) (Point frnP2) =
   LineSeg . unsafePerformIO . withForeignPtr frnP1 $
     \p1 -> withForeignPtr frnP2 $
       \p2 -> mask_ . newForeignPtr lineSegDelete $ lineSegNew p1 p2
+{-# INLINE lineSeg #-}
 
 -- | Extract the initial point of a line.
 initialPoint :: LineSeg -> Point
 initialPoint (LineSeg frnLine) =
   Point . unsafePerformIO . withForeignPtr frnLine $
     \ptr -> mask_ . newForeignPtr pointDelete $ Descartes.Internal.Foreign.LineSeg.initialPoint ptr
+{-# INLINE initialPoint #-}
 
 -- | Extract the final point of a line.
 finalPoint :: LineSeg -> Point
 finalPoint (LineSeg frnLine) =
   Point . unsafePerformIO . withForeignPtr frnLine $
     \ptr -> mask_ . newForeignPtr pointDelete $ Descartes.Internal.Foreign.LineSeg.finalPoint ptr
+{-# INLINE finalPoint #-}
 
 -- | Compute the length of a line.
 length :: LineSeg -> Double
 length (LineSeg frnLine) =
   unsafePerformIO . withForeignPtr frnLine $
     \ptr -> return . coerce . lineLength $ ptr
+{-# INLINE length #-}
 
 -- | Render a line in the active graphics window.
 draw :: LineSeg -> IO ()
 draw (LineSeg frnLine) =
   withForeignPtr frnLine drawLineSeg
+{-# INLINE draw #-}

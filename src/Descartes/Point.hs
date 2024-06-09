@@ -11,6 +11,7 @@ import System.IO.Unsafe (unsafePerformIO)
 point :: Int -> Int -> Point
 point xVal yVal =
   Point . unsafePerformIO . mask_ $ newForeignPtr pointDelete (pointNew (fromIntegral xVal) (fromIntegral yVal))
+{-# INLINE point #-}
 
 -- | Wait until the user clicks the mouse and return the point that
 -- the user indicated.
@@ -19,3 +20,4 @@ getPoint = do
   p <- Descartes.Internal.Foreign.Point.getPoint
   frnPtr <- mask_ $ newForeignPtr pointDelete p
   return $ Point frnPtr
+{-# INLINE getPoint #-}

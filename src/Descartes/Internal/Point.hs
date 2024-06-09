@@ -14,10 +14,14 @@ x :: Point -> Int
 x (Point frnPtr) =
   unsafePerformIO . withForeignPtr frnPtr $ return . fromIntegral . pointXCoord
 
+{-# INLINE x #-}
+
 -- | Extract the y-coordinate from the point.
 y :: Point -> Int
 y (Point frnPtr) =
   unsafePerformIO . withForeignPtr frnPtr $ return . fromIntegral . pointYCoord
+
+{-# INLINE y #-}
 
 instance Show Point where
   show point = "(" <> show (x point) <> ", " <> show (y point) <> ")"
