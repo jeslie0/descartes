@@ -1,0 +1,17 @@
+#+title: Descartes
+#+author: James Leslie
+[[https://img.shields.io/github/license/jeslie0/descartes.svg]]
+
+#+html: <img src=".img/hexagon.png" width="200px"/>
+
+This is a Haskell wrapper around The University of Edinburgh, School of Informatics' [[https://www.inf.ed.ac.uk/teaching/courses/cp/descartes.html][Descartes Package]]. The Descartes Packages is a small C library that uses [[https://www.libsdl.org/][SDL]] to make a very simple graphics package. It provides a way to make and render points, lines and rectangles on a 500px by 500px grid. It is mainly useful for educational purposes (indeed, I used it in the introductory "Computer Programming" course, back in 2014).
+
+The main reason I made this library was to get a better understanding of Haskell's Foreign Function Interface with C, which turns out to be quite nice and very useable. As such, this repository may be of more use for someone wanting to explore Haskell's FFI functionality, rather than as an actual library.
+
+Note - I only wrote the Haskell code and C wrapper code. Everything in [[file:cbits/descartes/][descartes]] directory is from the Descartes library.
+
+* Dependencies
+The only dependency is SDL. This has been tested with SDL version 1.2.15.
+
+* Modifications
+I made a few minor modifications to the Descartes C library. I changed the title of the graphics window to "Descartes".
